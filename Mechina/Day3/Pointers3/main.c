@@ -5,17 +5,6 @@
 -------------------------------------------------------*/
 #include <stdio.h>
 
-/*------------------------------------------------------
-* Function Name - print_array_by_pointers
-*
-* Function Purpose - show the pointed values in array
-* Parameters –  None
-*
-* Return Values - None
-*
-* Author - Yoav Malka
--------------------------------------------------------*/
-
 int main(){
     const int channel = 5;
     printf("Chanel no. %d\n", channel);
