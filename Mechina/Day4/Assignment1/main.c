@@ -10,7 +10,7 @@
 #define MAX_SIZE 5
 
 /*------------------------------------------------------
-* Function Name - display
+* Function Name - display_series
 *
 * Function Purpose - displays the integer series
 * Parameters –  int* ptr - pointer to a series of integers
@@ -21,7 +21,7 @@
 * Author - Yoav Malka
 -------------------------------------------------------*/
 
-void display(int* ptr, int size) {
+void display_series(int* ptr, int size) {
     if(ptr == NULL || size == 0) {
         printf("Error!");
         return;
@@ -35,7 +35,7 @@ void display(int* ptr, int size) {
 }
 
 /*------------------------------------------------------
-* Function Name - display
+* Function Name - sort_series
 *
 * Function Purpose - sorts the integer series
 * Parameters –  int* ptr - pointer to a series of integers
@@ -46,7 +46,7 @@ void display(int* ptr, int size) {
 * Author - Yoav Malka
 -------------------------------------------------------*/
 
-void sort(int* ptr, int size){
+void sort_series(int* ptr, int size){
     if(ptr == NULL || size == 0) {
         printf("Error!");
         return;
@@ -65,7 +65,7 @@ void sort(int* ptr, int size){
 }
 
 /*------------------------------------------------------
-* Function Name - display
+* Function Name - print_median
 *
 * Function Purpose - displays the median of the integer series
 * Parameters –  int* ptr - pointer to a series of integers
@@ -81,12 +81,13 @@ void print_median(int* ptr, int size) {
         printf("Error!");
         return;
     }
-
-    printf("The madien is: ");
+    
+    printf("The median is: ");
     if(size % 2 == 0)
-        printf("%.1f", (ptr[size/2] + ptr[size/2 - 1])/2);
+        printf("%.1f", (float)(ptr[size/2] + ptr[(size/2) - 1])/2);
     else
         printf("%d", ptr[size/2]);
+
     printf(".\n");
 }
 
@@ -117,9 +118,10 @@ int main(){
         size++;
     }
     printf("\n----------\n\n");
-    display(ptr,size);
+    display_series(ptr,size);
     printf("\n");
-    sort(ptr, size);
+
+    sort_series(ptr, size);
     print_median(ptr, size);
 
     free(ptr);
