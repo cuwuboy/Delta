@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 128
+#define MAX_SIZE 5
 
 /*------------------------------------------------------
 * Function Name - dyn_Scanf
@@ -41,17 +41,22 @@ char* dyn_scanf(void) {
         ptr[i]='\0';
     }
     
-    //scan command
-    fgets(ptr, (norm_size), stdin);
+    //scan implementation
+    register int ch;
+    register char* string_reg;
+    string_reg = ptr;
 
-    //not checking for reallocating because of section 2 that says
-    //that the strings length equals to the maximum size so no
-    //scale should be changes and no place should be reallocated.
+    while(--norm_size > 0 && (ch = getc(stdin)) != EOF)
+    {
+        if((*string_reg++ = ch) == '\n')
+            break;
+    }
+    *string_reg = '\0';
 
-    //just to make sure...
-    ptr[MAX_SIZE] = '\0';
+    if(ch != EOF || string_reg != ptr)
+        return ptr;
 
-    return ptr;
+    return NULL;
 }
 
 /*------------------------------------------------------
